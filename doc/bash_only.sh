@@ -19,7 +19,10 @@ METHOD=${1}
 shift
 PARAMS=$(echo $* | sed -e 's/ /,/g')
 REPLY=$(cat <<EOF
-{"jsonrpc": "2.0", "method": "${METHOD}", "params": [${PARAMS}], "id": 7}
+[{"jsonrpc": "2.0", "method": "${METHOD}", "params": [${PARAMS}], "id": 1},
+{"jsonrpc": "2.0", "method":"system.listMethods", "id":2},
+{"jsonrpc": "2.0", "method":"system.isAlive", "id":3},
+{"jsonrpc": "2.0", "method":"system.isAlive", "id":4}]
 EOF
 )
 }
