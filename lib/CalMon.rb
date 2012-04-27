@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 $:.unshift File.dirname(__FILE__)
 
 require "CalMon/version"
@@ -13,8 +15,12 @@ require 'jimson'
 class Test
   extend Jimson::Handler
 
-  def sum(a,b)
-    a + b
+  def sum(a,b,c)
+    a + b + c
+  end
+  
+  def sub(a,b)
+    a - b
   end
 end
 

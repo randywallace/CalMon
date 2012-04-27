@@ -15,42 +15,47 @@ PORT="8999"
 USER_AGENT="nc"
 
 gen_json_req() {
-METHOD=${1}
-shift
-PARAMS=$(echo $* | sed -e 's/ /,/g')
-REPLY=$(cat <<EOF
-[{"jsonrpc": "2.0", "method": "${METHOD}", "params": [${PARAMS}], "id": 1},
+  METHOD=${1}
+  shift
+  PARAMS=$(echo $* | sed -e 's/ /,/g')
+  REPLY=$(cat <<EOF
+[
+{"jsonrpc": "2.0", "method": "${METHOD}", "params": [${PARAMS}], "id": 1},
 {"jsonrpc": "2.0", "method":"system.listMethods", "id":2},
 {"jsonrpc": "2.0", "method":"system.isAlive", "id":3},
-{"jsonrpc": "2.0", "method":"system.isAlive", "id":4}]
+{"jsonrpc": "2.0", "method":"system.isAlive", "id":4},
+{"jsonrpc": "2.0", "method": "sub", "params": [40,20], "id": 5}
+]
 EOF
-)
+  )
 }
 
-MSG=$(mktemp /tmp/$(basename ${0})-$$) && trap "/bin/rm ${MSG}; l_debug Removed ${MSG}" EXIT
+gen_json_req sum 1 2 3
 
-gen_json_req sum 1 2
 BODY=${REPLY}
 
 SIZE=$(echo ${BODY} | wc -c)
 
-
-cat <<EOF > ${MSG}
+MSG=$(cat <<EOF
 POST ${POST_URL} HTTP/1.1
 User-Agent: ${USER_AGENT}
 Host: ${HOST}
 Content-Type: text/json
 Content-length: $(echo ${SIZE})
 
+${BODY}
 EOF
+)
 
-echo ${BODY} >> ${MSG}
-
-l_debug Dump ${MSG}
-cat ${MSG}; echo
+l_debug "${MSG}" && echo
 l_debug Sending Message to ${HOST}:${PORT}
-/bin/cat ${MSG} | nc ${HOST} ${PORT}
+
+RES=$(echo "${MSG}" | nc ${HOST} ${PORT} | grep 'jsonrpc')
+
+
+echo "$RES" | $(dirname $0)/../support/JSON_bash/JSON.sh
 
 if [[ $? -eq 0 ]]; then
    echo; l_info Message successfully sent to ${HOST}:${PORT}
 fi
+
