@@ -9,8 +9,16 @@ Gem::Specification.new do |s|
   s.authors     = %w{Randy D. Wallace Jr.}
   s.email       = %w{randy@randywallace.com}
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{Collect timestamp data from services and use that data to add events to google calendar.}
+  s.description = <<EOF
+With a JSON-RPC server, client services via a myriad of language options, 
+including bash+nc, ruby, and java, send messages that ultimately are used 
+to create events in Google Calendar.  These events may be used to easily 
+identify when an event (a Cron Job, batch script, etc...) started, stopped, 
+and what its exit status was. For an organization that relies heavily upon 
+the success, timeliness, and regularlity of many many batch jobs, a tool 
+like that can prove to be a real benefit to systems administrators. }
+EOF
 
   s.rubyforge_project = "CalMon"
 
