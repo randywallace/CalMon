@@ -1,10 +1,14 @@
+
 require "CalMon/RPC"
+require "CalMon/ObserveRPC"
 
 module CalMon
   class Server
 
     def initialize
-      @server = Jimson::Server.new(CalMon::RPC.new)
+      @rpc = CalMon::RPC.new
+      @observer = CalMon::ObserveRPC.new(@rpc)
+      @server = Jimson::Server.new(@rpc)
     end
 
     def start

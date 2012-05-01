@@ -2,15 +2,17 @@ require 'observer'
 
 module CalMon
   class RPC
-    extend Jimson::Handler
     include Observable
+    extend Jimson::Handler
+
+    jimson_exclude *Observable.public_instance_methods.map {|x| x.to_sym}
 
     def initialize
     end
 
     def start_time timestamp
       changed
-      puts Time.parse(timestamp)
+      notify_observers(Time.parse(timestamp), __method__.to_s)
       "Success"
     end
 
@@ -21,6 +23,7 @@ module CalMon
     def sub(a, b)
       a - b
     end
+
   end
 end
 
