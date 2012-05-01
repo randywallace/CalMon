@@ -30,7 +30,7 @@ EOF
   )
 }
 
-gen_json_req sum 1 2 3
+gen_json_req start_time '"2012-01-12 12:15:33"'
 
 BODY=${REPLY}
 

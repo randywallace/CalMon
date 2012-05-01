@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    CalMon (0.0.2)
+    CalMon (0.0.3)
       google-api-client
       jimson
       rake
