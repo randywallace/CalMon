@@ -17,7 +17,7 @@ to create events in Google Calendar.  These events may be used to easily
 identify when an event (a Cron Job, batch script, etc...) started, stopped, 
 and what its exit status was. For an organization that relies heavily upon 
 the success, timeliness, and regularlity of many many batch jobs, a tool 
-like that can prove to be a real benefit to systems administrators. }
+like that can prove to be a real benefit to systems administrators.
 EOF
 
   s.rubyforge_project = "CalMon"
