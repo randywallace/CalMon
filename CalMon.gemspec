@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.version     = CalMon::VERSION
   s.authors     = %w{Randy D. Wallace Jr.}
   s.email       = %w{randy@randywallace.com}
-  s.homepage    = ""
+  s.homepage    = "http://randywallace.github.com/CalMon/"
   s.summary     = %q{Collect timestamp data from services and use that data to add events to google calendar.}
   s.description = <<EOF
 With a JSON-RPC server, client services via a myriad of language options, 

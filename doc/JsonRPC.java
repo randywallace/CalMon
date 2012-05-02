@@ -7,7 +7,7 @@ import java.util.*;
 public class JsonRPC {
 
   public static void main(String[] args) {
-      
+
   URL serverURL = null;
 
   try {
@@ -18,7 +18,7 @@ public class JsonRPC {
   }
 
   JSONRPC2Session mySession = new JSONRPC2Session(serverURL);
-  
+
   mySession.getOptions().setRequestContentType("text/html");
   mySession.getOptions().setAllowedResponseContentTypes(new String[]{"text/html"});
 
@@ -44,4 +44,3 @@ public class JsonRPC {
 
   }
 }
-  
