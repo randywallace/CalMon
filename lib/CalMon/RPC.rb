@@ -16,6 +16,18 @@ module CalMon
       "Success"
     end
 
+    def stop_time timestamp
+      changed
+      notify_observers(Time.parse(timestamp), __method__.to_s)
+      "Success"
+    end
+
+    def running_time timestamp
+      changed
+      notify_observers(Time.parse(timestamp), __method__.to_s)
+      "Success"
+    end
+
     def sum(a, b, c)
       a + b + c
     end

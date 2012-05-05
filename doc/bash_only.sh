@@ -19,19 +19,9 @@ gen_json_req() {
   shift
   PARAMS=$(echo $* | sed -e 's/ /,/g')
   REPLY=$(cat <<EOF
-[
-{"jsonrpc": "2.0", "method": "${METHOD}", "params": [${PARAMS}], "id": 1},
-{"jsonrpc": "2.0", "method":"system.listMethods", "id":2},
-{"jsonrpc": "2.0", "method":"system.isAlive", "id":3},
-{"jsonrpc": "2.0", "method":"system.isAlive", "id":4},
-{"jsonrpc": "2.0", "method": "sub", "params": [40,20], "id": 5}
-]
+{"jsonrpc": "2.0", "method": "${METHOD}", "params": [${PARAMS}], "id": 1}
 EOF
   )
-}
-
-gen_json_req start_time '"2012-01-12 12:15:33"'
-
 BODY=${REPLY}
 
 SIZE=$(echo ${BODY} | wc -c)
@@ -58,4 +48,9 @@ echo "$RES" | $(dirname $0)/../support/JSON_bash/JSON.sh
 if [[ $? -eq 0 ]]; then
    echo; l_info Message successfully sent to ${HOST}:${PORT}
 fi
+}
+
+gen_json_req start_time   '"2012-01-12 12:15:33"'
+gen_json_req stop_time    '"2012-01-12 12:16:33"'
+gen_json_req running_time '"2012-01-12 12:17:33"'
 
