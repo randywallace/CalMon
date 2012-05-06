@@ -4,10 +4,11 @@
 # License::   MIT
 #
 
-# This class bridges the gap between the JsonRPC Server and additional
-# handlers for what the client sends to the server.
 
 module CalMon
+
+  # This class bridges the gap between the JsonRPC Server and additional
+  # handlers for what the client sends to the server.
   class ObserveRPC
     def initialize(rpc_instance)
       rpc_instance.add_observer(self)

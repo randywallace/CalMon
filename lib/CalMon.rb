@@ -8,7 +8,7 @@
 require 'rubygems'
 require "jimson"
 require "CalMon/version"
-require "CalMon/Server"
+require "CalMon/Server/Server"
 
 module CalMon
 end

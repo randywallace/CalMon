@@ -3,7 +3,31 @@
 $:.unshift File.dirname(__FILE__)
 
 require 'rubygems'
+require 'logger'
 require 'CalMon'
+require 'optparse'
 
-server = CalMon::Server.new
-server.start
+def start_server
+  CalMon::Server.new.start
+end
+
+class ParseOptions
+  def self.parse(args)
+    OptionParser.new do |opt|
+      opt.on '-s', '--server', 'Start JsonRPC Server' do
+        start_server
+      end
+      opt.on_tail '-h', '--help', 'Show Help' do
+        puts opt
+        exit
+      end
+      if args.size == 0
+        start_server
+      end
+      opt.parse!
+    end
+  end
+end
+
+ParseOptions.parse ARGV
+

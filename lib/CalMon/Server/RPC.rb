@@ -4,13 +4,14 @@
 # License::   MIT
 #
 
-# This class provides the RPC methods actually handled by the
-# JsonRPC Server.  Note that unless the observer is notified the
-# data sent by the remote client won't get anywhere. 
 
 require 'observer'
 
 module CalMon
+
+  # This class provides the RPC methods actually handled by the
+  # JsonRPC Server.  Note that unless the observer is notified the
+  # data sent by the remote client won't get anywhere. 
   class RPC
     include Observable
     extend Jimson::Handler

@@ -4,13 +4,14 @@
 # License::   MIT
 #
 
-# This class handles attaching the observer to the JsonRPC server and
-# starting the server.
 
 require "CalMon/RPC"
 require "CalMon/ObserveRPC"
 
 module CalMon
+
+  # This class handles attaching the observer to the JsonRPC server and
+  # starting the server.
   class Server
 
     def initialize
