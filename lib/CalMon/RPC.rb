@@ -1,3 +1,13 @@
+#
+# Author::    Randy D. Wallace Jr. (mailto:randy@randywallace.com)
+# Copyright:: Copyright (c) 2012 Randy D. Wallace Jr.
+# License::   MIT
+#
+
+# This class provides the RPC methods actually handled by the
+# JsonRPC Server.  Note that unless the observer is notified the
+# data sent by the remote client won't get anywhere. 
+
 require 'observer'
 
 module CalMon
