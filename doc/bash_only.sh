@@ -17,9 +17,10 @@ USER_AGENT="nc"
 gen_json_req() {
   METHOD=${1}
   shift
-  PARAMS=$(echo $* | sed -e 's/ /,/g')
+  #PARAMS=$(echo $* | sed -e 's/ /,/g')
+  PARAMS=$*
   REPLY=$(cat <<EOF
-{"jsonrpc": "2.0", "method": "${METHOD}", "params": [${PARAMS}], "id": 1}
+{"jsonrpc": "2.0", "method": "${METHOD}", "params": ["${PARAMS}"], "id": 1}
 EOF
   )
 BODY=${REPLY}
@@ -50,7 +51,7 @@ if [[ $? -eq 0 ]]; then
 fi
 }
 
-gen_json_req start_time   '"2012-01-12 12:15:33"'
-gen_json_req stop_time    '"2012-01-12 12:16:33"'
-gen_json_req running_time '"2012-01-12 12:17:33"'
+gen_json_req start_time   "$(TZ=UTC date +'%Y-%m-%d %H:%M:%S %Z')"
+gen_json_req stop_time    "$(TZ=UTC date +'%Y-%m-%d %H:%M:%S %Z')"
+gen_json_req running_time "$(TZ=UTC date +'%Y-%m-%d %H:%M:%S %Z')"
 
