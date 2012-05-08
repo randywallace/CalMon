@@ -1,0 +1,44 @@
+dreamhost.com setup
+===================
+
+On a shared dreamhost.com account, some minor things need to be done to 
+get it working 'just right'.
+  
+1. Checkout CalMon from git:
+
+    $ git clone <blah> <host>
+
+2. install all the Local gems you need:
+
+    $ gem install bundler
+    $ cd <host>
+    $ bundle install
+
+3. Ensure that 'passenger/ruby' is enabled for the host
+4. Note that config.ru in the git root is the script run by passenger that
+   spools up RACK and all that.
+5. Checkout CalMon into the hostname folder for the domain you wish to host from
+6. Setup the following line in your crontab:
+
+    */8 * * * * curl -m 1 http://HOSTNAME/ < /home/USERNAME/cron_http > /dev/null 2>&1
+
+7. put the following into ~/cron_http:
+
+    GET / HTTP/1.1
+    User-Agent: nc
+    Host: calmon.dreamhosters.com
+    Content-Type: text/html
+    Content-length: 0
+    Connection: keep-alive
+    Cache-Control: max-age=0
+
+8. create the following directories in the host folder: log, public, tmp
+9. touch the restart.txt file to get Passenger to wake up the first time, and after 
+   every config change:
+
+    $ touch <host>/tmp/restart.txt
+
+10. Enjoy :)
+
+Note: HOSTNAME/<host> refers to the virtual domain you set up in Dreamhost.  For
+example: calmon.dreamhosters.com
