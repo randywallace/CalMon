@@ -2,8 +2,11 @@
 # Dreamhost specific configuration for shared Phusion Passenger configuration.
 #
 
-ENV['GEM_PATH'] = '/home/USERNAME/.gems' 
+ENV['GEM_HOME'] = '/home/USERNAME/.gems'
+ENV['GEM_PATH'] = '$GEM_HOME:/usr/lib/ruby/gems/1.8'
 
+require 'rubygems'
+Gem.clear_paths
 require 'CalMon'
 
 #set :views, File.dirname(__FILE__) + '/views'
