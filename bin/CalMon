@@ -1,11 +1,11 @@
 #!/usr/bin/env ruby
 
-$:.unshift File.dirname(__FILE__)
+$LOAD_PATH.unshift(File.dirname(__FILE__) + '/../lib')
 
 require 'rubygems'
 require 'logger'
-require 'CalMon'
 require 'optparse'
+require 'CalMon'
 
 def start_server
   CalMon::Server.new.start

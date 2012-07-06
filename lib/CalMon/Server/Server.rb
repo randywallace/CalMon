@@ -5,8 +5,8 @@
 #
 
 
-require "CalMon/RPC"
-require "CalMon/ObserveRPC"
+require "CalMon/Server/RPC"
+require "CalMon/Server/ObserveRPC"
 
 module CalMon
 
