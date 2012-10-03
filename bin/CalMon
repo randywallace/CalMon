@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 $LOAD_PATH.unshift(File.dirname(__FILE__) + '/../lib')
+#$PORT = 80
 
 require 'rubygems'
 require 'logger'
@@ -8,7 +9,7 @@ require 'optparse'
 require 'CalMon'
 
 def start_server
-  CalMon::Server.new.start
+  CalMon::Server.new(:port => $PORT || 8999).start
 end
 
 class ParseOptions

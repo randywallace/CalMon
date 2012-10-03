@@ -55,4 +55,3 @@ fi
 gen_json_req start_time   "$(TZ=UTC date +'%Y-%m-%d %H:%M:%S %Z')"
 gen_json_req stop_time    "$(TZ=UTC date +'%Y-%m-%d %H:%M:%S %Z')"
 gen_json_req running_time "$(TZ=UTC date +'%Y-%m-%d %H:%M:%S %Z')"
-

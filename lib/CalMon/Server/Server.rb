@@ -14,10 +14,10 @@ module CalMon
   # starting the server.
   class Server
 
-    def initialize
+    def initialize(opts = {})
       @rpc = CalMon::RPC.new
       @observer = CalMon::ObserveRPC.new(@rpc)
-      @server = Jimson::Server.new(@rpc)
+      @server = Jimson::Server.new(@rpc, :port => opts.delete(:port) || 8999 )
     end
 
     def start
