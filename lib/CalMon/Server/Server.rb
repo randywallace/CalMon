@@ -14,6 +14,8 @@ module CalMon
   # starting the server.
   class Server
 
+    attr_reader :rpc, :observer, :server
+
     def initialize(opts = {})
       @rpc = CalMon::RPC.new
       @observer = CalMon::ObserveRPC.new(@rpc)

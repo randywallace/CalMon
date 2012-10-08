@@ -9,15 +9,15 @@ Gem::Specification.new do |s|
   s.authors     = %w{Randy D. Wallace Jr.}
   s.email       = %w{randy@randywallace.com}
   s.homepage    = "http://randywallace.github.com/CalMon/"
-  s.summary     = %q{Collect timestamp data from services and use that data to add events to google calendar.}
+  s.summary     = %q{Collect timestamp data from services and use that data to add events to a shared calendar.}
   s.description = <<EOF
 With a JSON-RPC server, client services via a myriad of language options, 
 including bash+nc, ruby, and java, send messages that ultimately are used 
-to create events in Google Calendar.  These events may be used to easily 
+to create events in a calendar.  These events may be used to easily 
 identify when an event (a Cron Job, batch script, etc...) started, stopped, 
 and what its exit status was. For an organization that relies heavily upon 
 the success, timeliness, and regularlity of many many batch jobs, a tool 
-like that can prove to be a real benefit to systems administrators.
+like that can prove to be a real benefit to systems administrators and interested parties.
 EOF
 
   s.rubyforge_project = "CalMon"
@@ -27,7 +27,7 @@ EOF
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = %w{lib}
 
-  # s.add_development_dependency "rspec"
+  s.add_development_dependency "rspec"
   s.add_runtime_dependency "rake"
   s.add_runtime_dependency "google-api-client"
   s.add_runtime_dependency "jimson"
