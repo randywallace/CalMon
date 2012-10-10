@@ -4,6 +4,8 @@
 # old CentOS servers you don't want to install rvm/ruby/gems on...
 #
 
+PROCESS_NAME="TEST"
+
 DATE=$(date +'%Y-%m-%d %H:%M:%S')
 l_info()  { echo ${DATE} "INFO:  $*"; }
 l_debug() { echo ${DATE} "DEBUG: $*"; }
@@ -21,7 +23,7 @@ gen_json_req() {
   #PARAMS=$(echo $* | sed -e 's/ /,/g')
   PARAMS=$*
   REPLY=$(cat <<EOF
-{"jsonrpc": "2.0", "method": "${METHOD}", "params": ["${PARAMS}"], "id": 1}
+{"jsonrpc": "2.0", "method": "${METHOD}", "params": ["${PARAMS}", "${PROCESS_NAME}"], "id": 1}
 EOF
   )
 BODY=${REPLY}

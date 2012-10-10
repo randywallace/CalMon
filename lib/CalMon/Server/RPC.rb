@@ -4,7 +4,6 @@
 # License::   MIT
 #
 
-
 require 'observer'
 
 module CalMon
@@ -21,21 +20,21 @@ module CalMon
     def initialize
     end
 
-    def start_time timestamp
+    def start_time(timestamp, process)
       changed
-      notify_observers(Time.parse(timestamp), __method__.to_s)
+      notify_observers(Time.parse(timestamp), __method__.to_s, process)
       "Success"
     end
 
-    def stop_time timestamp
+    def stop_time(timestamp, process)
       changed
-      notify_observers(Time.parse(timestamp), __method__.to_s)
+      notify_observers(Time.parse(timestamp), __method__.to_s, process)
       "Success"
     end
 
-    def running_time timestamp
+    def running_time(timestamp, process)
       changed
-      notify_observers(Time.parse(timestamp), __method__.to_s)
+      notify_observers(Time.parse(timestamp), __method__.to_s, process)
       "Success"
     end
 
