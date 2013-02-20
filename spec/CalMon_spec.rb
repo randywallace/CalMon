@@ -8,10 +8,10 @@ describe CalMon::RPC do
     CalMon::RPC.new.sub(5,2).should eq(3)
   end
   it "Notifies of start time" do
-    CalMon::RPC.new.start_time("2012-05-12 10:05:33", "test").should eq("Success")
+    CalMon::RPC.new.start_time(  "2012-05-12 10:05:33", "test").should eq("Success")
   end
-  it "Notifies of stop time" do
-    CalMon::RPC.new.stop_time("2012-05-12 10:05:33", "test").should eq("Success")
+  it "Notifies of stop time" do 
+    CalMon::RPC.new.stop_time(   "2012-05-12 10:05:33", "test").should eq("Success")
   end
   it "Notifies of running time" do
     CalMon::RPC.new.running_time("2012-05-12 10:05:33", "test").should eq("Success")

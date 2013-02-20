@@ -12,7 +12,7 @@ l_debug() { echo ${DATE} "DEBUG: $*"; }
 l_warn()  { echo ${DATE} "WARN:  $*"; }
 
 HOST="calmon.dreamhosters.com"
-#HOST="localhost"
+HOST="localhost"
 POST_URL="/RPC"
 PORT="8999"
 USER_AGENT="nc"
