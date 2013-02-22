@@ -51,6 +51,8 @@ echo "$RES" | $(dirname $0)/../support/JSON_bash/JSON.sh
 
 if [[ $? -eq 0 ]]; then
    echo; l_info Message successfully sent to ${HOST}:${PORT}
+else
+  echo; l_info Message unsuccessfully sent to ${HOST}:${PORT}
 fi
 }
 

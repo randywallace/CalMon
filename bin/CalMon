@@ -7,25 +7,32 @@ require 'logger'
 require 'optparse'
 require 'CalMon'
 
-def start_server
-  CalMon::Server.new(:port => ENV['PORT'] || 8999).start
+def start_server(opts = {})
+  @server = CalMon::Server.new(:port   => opts[:port]   || 8999,
+                               :server => opts[:server] || 'webrick')
+  @server.start
 end
 
 class ParseOptions
   def self.parse(args)
+    options = {}
     OptionParser.new do |opt|
-      opt.on '-s', '--server', 'Start JsonRPC Server' do
-        start_server
+      opt.on '-s SERVER', '--server=SERVER', 'Select Webserver' do |val|
+        options[:server] = val
+      end
+      opt.on '-p PORT', '--port=PORT', 'Select Port' do |val|
+        options[:port] = val
       end
       opt.on_tail '-h', '--help', 'Show Help' do
         puts opt
         exit
       end
       if args.size == 0
-        start_server
+        start_server 
       end
       opt.parse!
     end
+    start_server options
   end
 end
 
