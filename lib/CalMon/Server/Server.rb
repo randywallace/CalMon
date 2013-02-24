@@ -21,7 +21,7 @@ module CalMon
       @observer = CalMon::ObserveRPC.new(@rpc)
       @server = Jimson::Server.new(@rpc, 
                                    :port => opts.delete(:port) || 8999, 
-                                   :server => opts.delete(:server) || 'webrick',
+                                   :server => opts.delete(:server) || 'webrick'
                                    )
     end
 
