@@ -14,15 +14,14 @@ module CalMon
   # starting the server.
   class Server
 
-    attr_reader :rpc, :observer, :server
+    attr_reader :rpc, :observer, :server, :port
 
     def initialize(opts = {})
       @rpc = CalMon::RPC.new
       @observer = CalMon::ObserveRPC.new(@rpc)
-      @server = Jimson::Server.new(@rpc, 
-                                   :port => opts.delete(:port) || 8999, 
-                                   :server => opts.delete(:server) || 'webrick'
-                                   )
+      @port = opts.delete(:port) || 8999
+      @webserver = opts.delete(:server) || 'webrick'
+      @server = Jimson::Server.new(@rpc, :port => @port, :server => @webserver)
     end
 
     def start

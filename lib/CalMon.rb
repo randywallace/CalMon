@@ -6,7 +6,8 @@
 #
 
 require 'rubygems'
-require "jimson"
+require 'jimson'
+require 'thin'
 require "CalMon/version"
 require "CalMon/Server/Server"
 
