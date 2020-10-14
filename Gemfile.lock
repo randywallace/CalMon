@@ -45,7 +45,7 @@ GEM
     multi_json (1.1.0)
     multipart-post (1.2.0)
     rack (1.5.2)
-    rake (10.0.3)
+    rake (13.0.1)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rspec (2.13.0)
